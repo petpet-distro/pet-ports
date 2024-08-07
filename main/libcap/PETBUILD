@@ -1,0 +1,43 @@
+#!/bin/sh
+
+pkgname="libcap"
+pkgver="2.70"
+pkgrel="0"
+subpkgs="libcap2 libcap2-doc-mandoc libcap2-devel capability capability-doc-mandoc"
+pkgrdeps="none"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://cdn.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.xz"
+
+build() {
+        make GOLANG=no lib=lib $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+		GOLANG=no lib=lib \
+                DESTDIR="$bundledir"
+}
+
+package_libcap2() {
+        petcp "lib"
+}
+
+package_libcap2_devel() {
+        petcp "usr/include"
+}
+
+package_libcap2_doc_mandoc() {
+	petcp "usr/share/man/man5"
+	petcp "usr/share/man/man3"
+}
+
+package_capability() {
+	petcp "sbin"
+}
+
+package_capability_doc_mandoc() {
+	petcp "usr/share/man/man8"
+	petcp "usr/share/man/man1"
+}
+
