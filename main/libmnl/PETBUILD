@@ -1,0 +1,33 @@
+#!/bin/sh
+
+pkgname="libmnl"
+pkgver="1.0.5"
+pkgrel="0"
+subpkgs="libmnl libmnl-devel"
+pkgrdeps="none"
+pkgbdeps="petpet-sdk linux-headers automake m4 autoconf perl"
+
+pkgtb="https://www.netfilter.org/pub/libmnl/libmnl-$pkgver.tar.bz2"
+
+configure() {
+        ./configure \
+                --prefix=/usr 
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_libmnl() {
+        petcp "usr/lib"
+}
+
+package_libmnl_devel() {
+        petcp "usr/include"
+}
+
