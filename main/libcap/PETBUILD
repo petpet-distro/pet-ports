@@ -1,5 +1,11 @@
 #!/bin/sh
 
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
 pkgname="libcap"
 pkgver="2.70"
 pkgrel="0"
