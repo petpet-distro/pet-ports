@@ -10,7 +10,7 @@ pkgname="libcap"
 pkgver="2.70"
 pkgrel="0"
 subpkgs="libcap2 libcap2-doc-mandoc libcap2-devel capability capability-doc-mandoc"
-pkgrdeps="none"
+pkgrdeps="musl"
 pkgbdeps="petpet-sdk"
 
 pkgtb="https://cdn.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.xz"
