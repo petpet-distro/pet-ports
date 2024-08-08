@@ -1,0 +1,63 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+	Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+	This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="ncurses"
+pkgver="6.5"
+pkgrel="0"
+subpkgs="ncurses ncurses-tabset ncurses-terminfo libncurses libncurses-devel"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://invisible-island.net/archives/ncurses/ncurses-$pkgver.tar.gz"
+
+configure() {
+        ./configure \
+		--with-shared \
+		--with-cxx-shared \
+                --prefix=/usr 
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_ncurses_terminfo() {
+	pkgrdeps="none"
+
+	petcp "usr/share/terminfo"
+}
+
+package_ncurses_tabset() {
+	pkgrdeps="none"
+
+	petcp "usr/share/tabset"
+}
+
+package_ncurses() {
+	pkgrdeps="musl libncurses"
+
+        petcp "usr/bin"
+}
+
+package_libncurses() {
+	pkgrdeps="musl ncurses-tabset ncurses-terminfo"
+
+	petcp "usr/lib"
+}
+
+package_libncurses_devel() {
+	pkgrdeps="none"
+
+        petcp "usr/include"
+}
+
