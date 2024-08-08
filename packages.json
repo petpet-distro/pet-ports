@@ -1,0 +1,41 @@
+{
+    "repositoryName": "ports",
+    "packages": [
+        {
+            "pkgname": "musl",
+            "pkgver": "1.2.5-r0",
+            "pkgdesc": "A C library that implements standards and widely accepted extensions",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "petpet-base",
+            "pkgver": "1.0.0",
+            "pkgdesc": "The base set for petpet.",
+            "pkgdeps": "musl oksh libcap libmnl libncurses petpet-pkg"
+        },
+        {
+            "pkgname": "libcap",
+            "pkgver": "2.70-r0",
+            "pkgdesc": "Library for getting and setting POSIX.1e capabilities.",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "libmnl",
+            "pkgver": "1.0.5-r0",
+            "pkgdesc": "Minimalistic Netlink Library.",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "libncurses",
+            "pkgver": "6.5-r0",
+            "pkgdesc": "A library for terminal handling.",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "oksh",
+            "pkgver": "7.5-r0",
+            "pkgdesc": "A secure and compatible shell.",
+            "pkgdeps": "none"
+        }
+    ]
+}
