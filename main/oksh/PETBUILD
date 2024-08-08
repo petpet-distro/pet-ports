@@ -1,0 +1,41 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="oksh"
+pkgver="7.5"
+pkgrel="0"
+subpkgs="oksh oksh-doc-mandoc"
+pkgrdeps="musl libncurses"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://github.com/ibara/oksh/releases/download/oksh-$pkgver/oksh-$pkgver.tar.gz"
+
+configure() {
+	./configure \
+		--prefix=/usr \
+		--bindir=/bin \
+		--enable-curses
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_oksh() {
+        petcp "bin"
+}
+
+package_oksh_doc_mandoc() {
+        petcp "usr/share/man"
+}
+
