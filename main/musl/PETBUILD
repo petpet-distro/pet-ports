@@ -1,5 +1,11 @@
 #!/bin/sh
 
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
 pkgname="musl"
 pkgver="1.2.5"
 pkgrel="0"
