@@ -1,0 +1,59 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="linux"
+pkgver="6.6.44"
+pkgrel="0"
+subpkgs="linux linux-headers linux-modules"
+pkgrdeps="none"
+# TODO: there are definitely a lot more dependencies than this
+# I am, as of right now, however, too lazy to do that.
+# They seem to be listed on here:
+# https://www.kernel.org/doc/html/v4.10/process/stable-kernel-rules.html
+# glhf, future me!
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+
+configure() {
+	make $MAKEOPTS defconfig
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+	mkdir -p "$bundledir/boot"
+
+	cp "arch/x86/boot/bzImage" "$bundledir/boot/vmlinuz-$pkgver"
+	cp "System.map" "$bundledir/boot/System.map-$pkgver"
+	cp ".config" "$bundledir/boot/config-$pkgver"
+
+        make $MAKEOPTS headers_install \
+                INSTALL_HDR_PATH="$bundledir"
+
+	make $MAKEOPTS modules_install \
+		INSTALL_MOD_PATH="$bundledir"
+
+	mkdir "$bundledir/usr"
+	mv "$bundledir/include" "$bundledir/usr"
+}
+
+package_linux() {
+        petcp "/boot"
+}
+
+package_linux_headers() {
+        petcp "usr/include"
+}
+
+package_linux_modules() {
+	petcp "/lib"
+}
+
