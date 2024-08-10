@@ -1,0 +1,47 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="make"
+pkgver="4.4"
+pkgrel="0"
+subpkgs="make make-devel make-doc-mandoc make-doc-texinfo"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk autoconf automake perl texinfo"
+
+pkgtb="https://ftp.gnu.org/gnu/make/make-$pkgver.tar.gz"
+
+configure() {
+        ./configure \
+		--prefix=/usr
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_make() {
+        petcp "usr/bin"
+}
+
+package_make_devel() {
+	petcp "usr/share"
+}
+
+package_make_doc_mandoc() {
+        petcp "usr/share/man"
+}
+
+package_make_doc_texinfo() {
+	petcp "usr/share/info"
+}
+
