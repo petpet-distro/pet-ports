@@ -10,7 +10,7 @@ pkgname="coreutils"
 pkgver="9.5"
 pkgrel="0"
 subpkgs="coreutils coreutils-doc-mandoc coreutils-doc-texinfo"
-pkgrdeps="none"
+pkgrdeps="musl libcap libmnl"
 pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo"
 
 pkgtb="https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz"
