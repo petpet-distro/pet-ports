@@ -32,7 +32,7 @@ package() {
 }
 
 package_oksh() {
-        petcp "bin"
+        petcp "/bin"
 }
 
 package_oksh_doc_mandoc() {
