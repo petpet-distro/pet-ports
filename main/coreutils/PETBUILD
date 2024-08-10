@@ -1,0 +1,44 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="coreutils"
+pkgver="9.5"
+pkgrel="0"
+subpkgs="coreutils coreutils-doc-mandoc coreutils-doc-texinfo"
+pkgrdeps="none"
+pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo"
+
+pkgtb="https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz"
+
+configure() {
+        ./configure \
+                --prefix=/usr
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_coreutils() {
+        petcp "usr/libexec"
+        petcp "usr/bin"
+}
+
+package_coreutils_doc_mandoc() {
+        petcp "usr/share/man"
+}
+
+package_coreutils_doc_texinfo() {
+	petcp "usr/share/info"
+}
+
