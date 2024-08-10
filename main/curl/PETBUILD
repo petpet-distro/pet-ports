@@ -1,0 +1,66 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="curl"
+pkgver="8.9.1"
+pkgrel="0"
+subpkgs="curl curl-doc-mandoc libcurl libcurl-devel libcurl-doc-mandoc"
+pkgrdeps=""
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://curl.se/download/curl-$pkgver.tar.xz"
+
+configure() {
+        ./configure \
+                --prefix=/usr \
+		--with-openssl \
+		--without-zlib \
+		--without-zstd \
+		--without-libgsas
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_curl() {
+	pkgrdeps="musl libcurl"
+
+        petcp "usr/bin"
+}
+
+package_curl_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man/man1"
+}
+
+package_libcurl() {
+	pkgrdeps="musl libcrypto"
+
+	petcp "usr/lib"
+}
+
+package_libcurl_devel() {
+        pkgrdeps="none"
+
+        petcp "usr/include"
+	petcp "usr/share/aclocal"
+}
+
+package_libcurl_doc_mandoc() {
+	pkgrdeps="none"
+
+	petcp "usr/share/man/man3"
+}
+
