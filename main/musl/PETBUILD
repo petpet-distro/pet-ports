@@ -32,7 +32,7 @@ package() {
 
 package_musl() {
         petcp "usr/lib"
-        petcp "lib"
+        petcp "/lib"
 }
 
 package_musl_devel() {
