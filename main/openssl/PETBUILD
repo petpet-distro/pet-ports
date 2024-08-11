@@ -1,0 +1,79 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="openssl"
+pkgver="3.3.1"
+pkgrel="0"
+subpkgs="openssl openssl-doc-mandoc openssl-doc-html libcrypto libcrypto-devel libcrypto-doc-mandoc libcrypto-doc-html"
+pkgrdeps="none"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://github.com/openssl/openssl/releases/download/openssl-$pkgver/openssl-$pkgver.tar.gz"
+
+configure() {
+        ./config \
+                --prefix=/usr \
+		--libdir=/lib \
+		--openssldir=/etc/ssl
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_openssl() {
+	pkgrdeps="musl libcrypto"
+
+	petcp "usr/bin"
+}
+
+package_openssl_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man/man1"
+	petcp "usr/share/man/man5"
+}
+
+package_openssl_doc_html() {
+	pkgrdeps="none"
+
+	petcp "usr/share/doc/openssl/html/man1"
+	petcp "usr/share/doc/openssl/html/man5"
+}
+
+package_libcrypto() {
+	pkgrdeps="musl"
+
+	petcp "/lib"
+}
+
+package_libcrypto_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include"
+}
+
+package_libcrypto_doc_mandoc() {
+	pkgrdeps="none"
+
+	petcp "usr/share/man/man3"
+	petcp "usr/share/man/man7"
+}
+
+package_libcrypto_doc_html() {
+	pkgrdeps="none"
+
+	petcp "usr/share/doc/openssl/html/man3"
+	petcp "usr/share/doc/openssl/html/man7"
+}
+
