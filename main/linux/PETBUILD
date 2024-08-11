@@ -46,14 +46,20 @@ package() {
 }
 
 package_linux() {
+	pkgrdeps="none"
+
         petcp "/boot"
 }
 
 package_linux_headers() {
+	pkgrdeps="none"
+
         petcp "usr/include"
 }
 
 package_linux_modules() {
+	pkgrdeps="none"
+
 	petcp "/lib"
 }
 
