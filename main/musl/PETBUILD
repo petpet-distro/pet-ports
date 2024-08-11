@@ -31,11 +31,15 @@ package() {
 }
 
 package_musl() {
+	pkgrdeps="none"
+
         petcp "usr/lib"
         petcp "/lib"
 }
 
 package_musl_devel() {
+	pkgrdeps="none"
+
         petcp "usr/include"
 }
 
