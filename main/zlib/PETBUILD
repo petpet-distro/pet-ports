@@ -1,0 +1,44 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="zlib"
+pkgver="1.3.1"
+pkgrel="0"
+subpkgs="libz libz-devel libz-doc-mandoc"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://zlib.net/fossils/zlib-$pkgver.tar.gz"
+
+configure() {
+	./configure \
+		--prefix=/usr \
+		--libdir=/lib
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_libz() {
+        petcp "/lib"
+}
+
+package_libz_devel() {
+        petcp "usr/include"
+}
+
+package_libz_doc_mandoc() {
+	petcp "usr/share/man"
+}
+
