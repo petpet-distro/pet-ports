@@ -1,0 +1,62 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="bzip2"
+pkgver="1.0.8"
+pkgrel="0"
+subpkgs="bzip2 bzip2-doc-mandoc libbzip2 libbzip2-devel"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://sourceware.org/pub/bzip2/bzip2-$pkgver.tar.gz"
+
+build() {
+	# Guess who lost sleep over this.
+	make -f Makefile-libbz2_so all
+	make all
+}
+
+package() {
+        make $MAKEOPTS install \
+                PREFIX="$bundledir/usr"
+	
+	# Guess who also lost sleep over this.
+	mkdir "$bundledir/usr/share"
+	mv "$bundledir/usr/man" "$bundledir/usr/share/"
+}
+
+package_bzip2() {
+	pkgrdeps="musl libbzip2"
+
+        petcp "usr/bin"
+}
+
+package_bzip2_devel() {
+	pkgrdeps="none"
+
+        petcp "usr/include"
+}
+
+package_bzip2_doc_mandoc() {
+	pkgrdeps="none"
+
+	petcp "usr/share/man"
+}
+
+package_libbzip2() {
+	pkgrdeps="musl"
+
+	petcp "usr/lib"
+}
+
+package_libbzip2_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include"
+}
+
