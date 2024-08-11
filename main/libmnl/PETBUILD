@@ -30,10 +30,14 @@ package() {
 }
 
 package_libmnl() {
+	pkgrdeps="musl"
+
         petcp "usr/lib"
 }
 
 package_libmnl_devel() {
+	pkgrdeps="none"
+
         petcp "usr/include"
 }
 
