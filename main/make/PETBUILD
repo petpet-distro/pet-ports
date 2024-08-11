@@ -7,7 +7,7 @@
 authorsrightsnotice
 
 pkgname="make"
-pkgver="4.4"
+pkgver="4.4.1"
 pkgrel="0"
 subpkgs="make make-devel make-doc-mandoc make-doc-texinfo"
 pkgrdeps="musl"
