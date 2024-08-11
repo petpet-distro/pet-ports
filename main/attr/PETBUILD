@@ -1,0 +1,55 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="attr"
+pkgver="2.5.2"
+pkgrel="0"
+subpkgs="attr attr-devel attr-doc-mandoc attr-doc-notices"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="http://download.savannah.nongnu.org/releases/attr/attr-$pkgver.tar.xz"
+
+configure() {
+        ./configure \
+                --prefix=/usr \
+		--libdir=/lib
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_attr() {
+	pkgrdeps="musl"
+
+        petcp "/lib"
+}
+
+package_attr_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include"
+}
+
+package_attr_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man"
+}
+
+package_attr_doc_notices() {
+	pkgrdeps="none"
+
+	petcp "usr/share/doc"
+}
