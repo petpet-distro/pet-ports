@@ -32,10 +32,14 @@ package() {
 }
 
 package_oksh() {
+	pkgrdeps="musl libncurses"
+
         petcp "/bin"
 }
 
 package_oksh_doc_mandoc() {
+	pkgrdeps="none"
+
         petcp "usr/share/man"
 }
 
