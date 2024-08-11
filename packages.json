@@ -2,40 +2,84 @@
     "repositoryName": "ports",
     "packages": [
         {
-            "pkgname": "musl",
-            "pkgver": "1.2.5-r0",
-            "pkgdesc": "A C library that implements standards and widely accepted extensions",
-            "pkgdeps": "none"
+            "pkgname": "bzip2",
+            "pkgver": "1.0.8",
+            "pkgdeps": "musl petpet-sdk"
         },
         {
-            "pkgname": "petpet-base",
-            "pkgver": "1.0.0",
-            "pkgdesc": "The base set for petpet.",
-            "pkgdeps": "musl oksh libcap libmnl libncurses petpet-pkg"
+            "pkgname": "coreutils",
+            "pkgver": "9.5",
+            "pkgdeps": "musl libcap libmnl libcrypto petpet-sdk autoconf automake m4 perl gperf texinfo libcrypto-devel"
+        },
+        {
+            "pkgname": "curl",
+            "pkgver": "8.9.1",
+            "pkgdeps": "musl libcurl petpet-sdk"
+        },
+        {
+            "pkgname": "ed",
+            "pkgver": "1.20",
+            "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "fastfetch",
+            "pkgver": "2.21.1",
+            "pkgdeps": "musl petpet-sdk cmake"
         },
         {
             "pkgname": "libcap",
-            "pkgver": "2.70-r0",
-            "pkgdesc": "Library for getting and setting POSIX.1e capabilities.",
-            "pkgdeps": "none"
+            "pkgver": "2.70",
+            "pkgdeps": "musl petpet-sdk"
         },
         {
             "pkgname": "libmnl",
-            "pkgver": "1.0.5-r0",
-            "pkgdesc": "Minimalistic Netlink Library.",
-            "pkgdeps": "none"
+            "pkgver": "1.0.5",
+            "pkgdeps": "musl petpet-sdk linux-headers automake m4 autoconf perl"
         },
         {
-            "pkgname": "libncurses",
-            "pkgver": "6.5-r0",
-            "pkgdesc": "A library for terminal handling.",
-            "pkgdeps": "none"
+            "pkgname": "ncurses",
+            "pkgver": "6.5",
+            "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "linux",
+            "pkgver": "6.6.44",
+            "pkgdeps": "none petpet-sdk"
+        },
+        {
+            "pkgname": "make",
+            "pkgver": "4.4.1",
+            "pkgdeps": "musl petpet-sdk autoconf automake perl texinfo"
+        },
+        {
+            "pkgname": "musl",
+            "pkgver": "1.2.5",
+            "pkgdeps": "none petpet-sdk"
+        },
+        {
+            "pkgname": "nano",
+            "pkgver": "8.1",
+            "pkgdeps": "musl libncurses petpet-sdk libncurses-devel"
         },
         {
             "pkgname": "oksh",
-            "pkgver": "7.5-r0",
-            "pkgdesc": "A secure and compatible shell.",
-            "pkgdeps": "none"
+            "pkgver": "7.5",
+            "pkgdeps": "musl libncurses petpet-sdk"
+        },
+        {
+            "pkgname": "openssl",
+            "pkgver": "3.3.1",
+            "pkgdeps": "none petpet-sdk"
+        },
+        {
+            "pkgname": "xz",
+            "pkgver": "5.6.2",
+            "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "zlib",
+            "pkgver": "1.3.1",
+            "pkgdeps": "musl petpet-sdk"
         }
     ]
 }
