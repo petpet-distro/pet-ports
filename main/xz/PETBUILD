@@ -1,0 +1,61 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="xz"
+pkgver="5.6.2"
+pkgrel="0"
+subpkgs="xz xz-doc-mandoc xz-doc-notices liblzma liblzma-devel"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://github.com/tukaani-project/xz/releases/download/v$pkgver/xz-$pkgver.tar.xz"
+
+configure() {
+	./configure \
+		--prefix=/usr 
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_xz() {
+	pkgrdeps="musl liblzma"
+
+        petcp "usr/bin"
+}
+
+package_xz_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man/man1"
+}
+
+package_xz_doc_notices() {
+	pkgrdeps="none"
+
+	petcp "usr/share/doc"
+}
+
+package_liblzma() {
+	pkgrdeps="musl"
+
+	petcp "usr/lib"
+}
+
+package_liblzma_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include"
+}
+
