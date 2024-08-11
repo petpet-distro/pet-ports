@@ -31,14 +31,20 @@ package() {
 }
 
 package_libz() {
+	pkgrdeps="musl"
+
         petcp "/lib"
 }
 
 package_libz_devel() {
+	pkgrdeps="none"
+
         petcp "usr/include"
 }
 
 package_libz_doc_mandoc() {
+	pkgrdeps="none"
+
 	petcp "usr/share/man"
 }
 
