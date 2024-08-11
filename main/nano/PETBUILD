@@ -1,0 +1,75 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="nano"
+pkgver="8.1"
+pkgrel="0"
+subpkgs="nano nano-doc-mandoc nano-doc-texinfo"
+pkgrdeps="musl libncurses"
+pkgbdeps="petpet-sdk libncurses-devel"
+
+pkgtb="https://www.nano-editor.org/dist/v8/nano-8.1.tar.xz"
+
+configure() {
+	./configure \
+		--prefix=/usr \
+		--disable-nls \
+		--disable-rpath \
+		--disable-browser \
+		--disable-color \
+		--disable-comment \
+		--disable-extra \
+		--disable-formatter \
+		--disable-help \
+		--disable-histories \
+		--disable-justify \
+		--disable-libmagic \
+		--disable-linter \
+		--disable-linenumbers \
+		--disable-mouse \
+		--disable-multibuffer \
+		--disable-nanorc \
+		--disable-operatingdir \
+		--disable-speller \
+		--disable-tabcomp \
+		--disable-wordcomp \
+		--disable-wrapping
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_nano() {
+	pkgrdeps="musl libncurses"
+
+        petcp "usr/bin"
+}
+
+package_nano_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man"
+}
+
+package_nano_doc_texinfo() {
+	pkgrdeps="none"
+
+	petcp "usr/share/info"
+}
+
+package_nano_doc_notices() {
+	pkgrdeps="none"
+
+	petcp "usr/share/doc"
+}
