@@ -10,8 +10,8 @@ pkgname="coreutils"
 pkgver="9.5"
 pkgrel="0"
 subpkgs="coreutils coreutils-doc-mandoc coreutils-doc-texinfo"
-pkgrdeps="musl libcap libmnl"
-pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo"
+pkgrdeps="musl libcap libmnl libcrypto"
+pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo libcrypto-devel"
 
 pkgtb="https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz"
 
@@ -30,15 +30,21 @@ package() {
 }
 
 package_coreutils() {
+	pkgrdeps="musl libcap libmnl libcrypto"
+
         petcp "usr/libexec"
         petcp "usr/bin"
 }
 
 package_coreutils_doc_mandoc() {
+	pkgrdeps="none"
+
         petcp "usr/share/man"
 }
 
 package_coreutils_doc_texinfo() {
+	pkgrdeps="none"
+
 	petcp "usr/share/info"
 }
 
