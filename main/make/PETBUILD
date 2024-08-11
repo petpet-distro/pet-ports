@@ -30,18 +30,26 @@ package() {
 }
 
 package_make() {
+	pkgrdeps="musl"
+
         petcp "usr/bin"
 }
 
 package_make_devel() {
+	pkgrdeps="none"
+
 	petcp "usr/share"
 }
 
 package_make_doc_mandoc() {
+	pkgrdeps="none"
+
         petcp "usr/share/man"
 }
 
 package_make_doc_texinfo() {
+	pkgrdeps="none"
+
 	petcp "usr/share/info"
 }
 
