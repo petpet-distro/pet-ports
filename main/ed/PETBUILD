@@ -1,0 +1,49 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="ed"
+pkgver="1.20"
+pkgrel="0"
+subpkgs="ed ed-doc-mandoc ed-doc-texinfo"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://ftp.gnu.org/gnu/ed/ed-$pkgver.tar.lz"
+
+configure() {
+        ./configure \
+                --prefix=/usr
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_ed() {
+	pkgrdeps="musl"
+
+        petcp "/bin"
+}
+
+package_ed_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man"
+}
+
+package_ed_doc_texinfo() {
+	pkgrdeps="none"
+
+	petcp "usr/share/info"
+}
+
