@@ -1,0 +1,51 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="tar"
+pkgver="1.35"
+pkgrel="0"
+subpkgs="tar tar-doc-mandoc tar-doc-texinfo"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk autoconf automake perl texinfo"
+
+pkgtb="https://ftp.gnu.org/gnu/tar/tar-$pkgver.tar.xz"
+
+configure() {
+        ./configure \
+		--prefix=/usr \
+		--disable-nls
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_tar() {
+	pkgrdeps="musl"
+
+	petcp "usr/libexec"
+        petcp "usr/bin"
+}
+
+package_tar_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man"
+}
+
+package_tar_doc_texinfo() {
+	pkgrdeps="none"
+
+	petcp "usr/share/info"
+}
+
