@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="attr"
+pkgdesc="Library and wrapper for file attributes"
 pkgver="2.5.2"
 pkgrel="0"
 subpkgs="attr attr-devel attr-doc-mandoc attr-doc-notices"
