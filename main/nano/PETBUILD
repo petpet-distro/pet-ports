@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="nano"
+pkgdesc="The GNU nano text editor"
 pkgver="8.1"
 pkgrel="0"
 subpkgs="nano nano-doc-mandoc nano-doc-texinfo"
