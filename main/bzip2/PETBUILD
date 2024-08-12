@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="bzip2"
+pkgdesc="Library and wrapper for the bzip2 compression library"
 pkgver="1.0.8"
 pkgrel="0"
 subpkgs="bzip2 bzip2-doc-mandoc libbzip2 libbzip2-devel"
