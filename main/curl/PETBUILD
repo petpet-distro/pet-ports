@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="curl"
+pkgdesc="Library and wrapper for internet protocols"
 pkgver="8.9.1"
 pkgrel="0"
 subpkgs="curl curl-doc-mandoc libcurl libcurl-devel libcurl-doc-mandoc"
