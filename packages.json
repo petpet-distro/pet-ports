@@ -80,6 +80,26 @@
             "pkgname": "zlib",
             "pkgver": "1.3.1",
             "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "acl",
+            "pkgver": "2.3.2",
+            "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "attr",
+            "pkgver": "2.5.2",
+            "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "sinit",
+            "pkgver": "1.1",
+            "pkgdeps": "musl petpet-sdk"
+        },
+        {
+            "pkgname": "tar",
+            "pkgver": "1.35",
+            "pkgdeps": "musl petpet-sdk autoconf automake perl texinfo"
         }
     ]
 }
