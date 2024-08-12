@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="oksh"
+pkgdesc="The portable version of the OpenBSD ksh"
 pkgver="7.5"
 pkgrel="0"
 subpkgs="oksh oksh-doc-mandoc"
