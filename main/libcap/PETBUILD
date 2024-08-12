@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="libcap"
+pkgdesc="Library and wrapper for capabilities"
 pkgver="2.70"
 pkgrel="0"
 subpkgs="libcap2 libcap2-doc-mandoc libcap2-devel capability capability-doc-mandoc"
