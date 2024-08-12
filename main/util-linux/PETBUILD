@@ -1,0 +1,706 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="util-linux"
+pkgver="2.40.2"
+pkgrel="0"
+subpkgs="util-linux"
+subpkgs="$subpkgs dmesg kill more mount mountpoint pipesz umount"
+subpkgs="$subpkgs agetty blkdiscard blkid blkpr blkzone blockdev chcpu ctrlaltdel findfs fsck fsck-cramfs fsck-minix fsfreeze fstrim hwclock mkfs mkfs-bfs mkfs-cramfs mkfs-minix mkswap nologin pivot_root sulogin swaplabel switch_root"
+subpkgs="$subpkgs cal chmem choom chrt colcrt colrm eject enosys exch fadvise fallocate flock getopt hardlink hexdump ionice ipcmk ipcrm ipcs isosize last logger look mcookie mesg namei nsenter rename renice rev script scriptlive scriptreplay setarch setpgid setsid setterm taskset uclampset ul unshare utmpdump uuidgen waitpid wall whereis"
+subpkgs="$subpkgs ldattach readprofile rtcwake uuidd"
+subpkgs="$subpkgs libblkid libblkid-devel libfdisk libfdisk-devel libmount libmount-devel libuuid libuuid-devel"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-$pkgver.tar.xz"
+
+configure() {
+	./configure --prefix=/usr \
+		--disable-liblastlog2 \
+		--disable-libsmartcols \
+		--disable-asciidoc \
+		--disable-poman
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_util_linux() {
+	pkgrdeps="$subpkgs"
+}
+
+# NEW SECTION — libraries (/lib & /usr/lib)
+
+package_libblkid() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/lib"
+	mkdir -p "$subpkgdir/usr/lib"
+
+	cp "$bundledir/lib/libblkid.so.1.1.0" "$subpkgdir/lib/libblkid.so.1.1.0"
+	cp "$bundledir/lib/libblkid.so.1" "$subpkgdir/lib/libblkid.so.1"
+	cp "$bundledir/usr/lib/libblkid.a" "$subpkgdir/usr/lib/libblkid.a"
+	cp "$bundledir/usr/lib/libblkid.la" "$subpkgdir/usr/lib/libblkid.la"
+	cp "$bundledir/usr/lib/libblkid.so" "$subpkgdir/usr/lib/libblkid.so"
+}
+
+package_libblkid_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include/blkid"
+}
+
+package_libfdisk() {
+	pkgrdeps="musl libuuid libblkid libeconf"
+
+	mkdir -p "$subpkgdir/lib"
+	mkdir -p "$subpkgdir/usr/lib"
+
+	cp "$bundledir/lib/libfdisk.so.1.1.0" "$subpkgdir/lib/libfdisk.so.1.1.0"
+        cp "$bundledir/lib/libfdisk.so.1" "$subpkgdir/lib/libfdisk.so.1"
+        cp "$bundledir/usr/lib/libfdisk.a" "$subpkgdir/usr/lib/libfdisk.a"
+        cp "$bundledir/usr/lib/libfdisk.la" "$subpkgdir/usr/lib/libfdisk.la"
+        cp "$bundledir/usr/lib/libfdisk.so" "$subpkgdir/usr/lib/libfdisk.so"
+}
+
+package_libfdisk_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include/libfdisk"
+}
+
+package_libmount() {
+	pkgrdeps="musl libblkid libeconf"
+
+	mkdir -p "$subpkgdir/lib"
+	mkdir -p "$subpkgdir/usr/lib"
+
+	cp "$bundledir/lib/libmount.so.1.1.0" "$subpkgdir/lib/libmount.so.1.1.0"
+        cp "$bundledir/lib/libmount.so.1" "$subpkgdir/lib/libmount.so.1"
+        cp "$bundledir/usr/lib/libmount.a" "$subpkgdir/usr/lib/libmount.a"
+        cp "$bundledir/usr/lib/libmount.la" "$subpkgdir/usr/lib/libmount.la"
+        cp "$bundledir/usr/lib/libmount.so" "$subpkgdir/usr/lib/libmount.so"
+}
+
+package_libmount_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include/libmount"
+}
+
+package_libuuid() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/lib"
+	mkdir -p "$subpkgdir/usr/lib"
+
+	cp "$bundledir/lib/libuuid.so.1.3.0" "$subpkgdir/lib/libuuid.so.1.3.0"
+        cp "$bundledir/lib/libuuid.so.1" "$subpkgdir/lib/libuuid.so.1"
+        cp "$bundledir/usr/lib/libuuid.a" "$subpkgdir/usr/lib/libuuid.a"
+        cp "$bundledir/usr/lib/libuuid.la" "$subpkgdir/usr/lib/libuuid.la"
+        cp "$bundledir/usr/lib/libuuid.so" "$subpkgdir/usr/lib/libuuid.so"
+}
+
+package_libuuid_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include/uuid"
+}
+
+# NEW SECTION — Commands (/bin)
+
+package_dmesg() {
+	pkgrdeps="musl libncurses"
+	
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/dmesg" "$subpkgdir/bin/dmesg"
+}
+
+package_kill() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/kill" "$subpkgdir/bin/kill"
+}
+
+package_more() {
+	pkgrdeps="musl libncurses"
+
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/more" "$subpkgdir/bin/more"
+}
+
+package_mount() {
+	pkgrdeps="musl libmount libblkid libeconf"
+
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/mount" "$subpkgdir/bin/mount"
+}
+
+package_mountpoint() {
+	pkgrdeps="musl libmount libblkid libeconf"
+
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/mountpoint" "$subpkgdir/bin/mountpoint"
+}
+
+package_pipesz() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/pipesz" "$subpkgdir/bin/pipesz"
+}
+
+package_umount() {
+	pkgrdeps="musl libmount libblkid libeconf"
+
+	mkdir -p "$subpkgdir/bin"
+	cp "$bundledir/bin/umount" "$subpkgdir/bin/umount"
+}
+
+# NEW SECTION (/sbin)
+
+package_agetty() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/agetty" "$subpkgdir/sbin/agetty"
+}
+
+package_blkdiscard() {
+	pkgrdeps="musl libblkid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/blkdiscard" "$subpkgdir/sbin/blkdiscard"
+}
+
+package_blkid() {
+	pkgrdeps="musl libblkid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/blkid" "$subpkgdir/sbin/blkid"
+}
+
+package_blkpr() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/blkpr" "$subpkgdir/sbin/blkpr"
+}
+
+package_blkzone() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/blkzone" "$subpkgdir/sbin/blkzone"
+}
+
+package_blockdev() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/blockdev" "$subpkgdir/sbin/blockdev"
+}
+
+package_chcpu() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/chcpu" "$subpkgdir/sbin/chcpu"
+}
+
+package_ctrlaltdel() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/ctrlaltdel" "$subpkgdir/sbin/ctrlaltdel"
+}
+
+package_findfs() {
+	pkgrdeps="musl libblkid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/findfs" "$subpkgdir/sbin/findfs"
+}
+
+package_fsck() {
+	pkgrdeps="musl libmount libblkid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/fsck" "$subpkgdir/sbin/findfs"
+}
+
+package_fsck_cramfs() {
+	pkgrdeps="musl libz"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/fsck.cramfs" "$subpkgdir/sbin/fsck.cramfs"
+}
+
+package_fsck_minix() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/fsck.cramfs" "$subpkgdir/sbin/fsck.cramfs"
+}
+
+package_fsfreeze() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/fsfreeze" "$subpkgdir/sbin/fsfreeze"
+}
+
+package_fstrim() {
+	pkgrdeps="musl libmount libblkid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/fstrim" "$subpkgdir/sbin/fstrim"
+}
+
+package_hwclock() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/hwclock" "$subpkgdir/sbin/hwclock"
+}
+
+package_mkfs() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/mkfs" "$subpkgdir/sbin/mkfs"
+}
+
+package_mkfs_bfs() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/mkfs.bfs" "$subpkgdir/sbin/mkfs.bfs"
+}
+
+package_mkfs_cramfs() {
+	pkgrdeps="musl libz"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/mkfs.cramfs" "$subpkgdir/sbin/mkfs.cramfs"
+}
+
+package_mkfs_minix() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/mkfs.minix" "$subpkgdir/sbin/mkfs.minix"
+}
+
+package_mkswap() {
+	pkgrdeps="musl libuuid libblkid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/mkswap" "$subpkgdir/sbin/mkswap"
+}
+
+package_nologin() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/nologin" "$subpkgdir/sbin/nologin"
+}
+
+package_pivot_root() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/pivot_root" "$subpkgdir/sbin/pivot_root"
+}
+
+package_sulogin() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/sulogin" "$subpkgdir/sbin/sulogin"
+}
+
+package_swaplabel() {
+	pkgrdeps="musl libblkid libuuid libeconf"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/swaplabel" "$subpkgdir/sbin/swaplabel"
+}
+
+package_switch_root() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/sbin"
+	cp "$bundledir/sbin/switch_root" "$subpkgdir/sbin/switch_root"
+}
+
+# NEW SECTION (/usr/bin)
+
+package_cal() {
+	pkgrdeps="musl libncurses"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/cal" "$subpkgdir/usr/bin/cal"
+}
+
+package_chmem() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/chmem" "$subpkgdir/usr/bin/chmem"
+}
+
+package_choom() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/choom" "$subpkgdir/usr/bin/choom"
+}
+
+package_chrt() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/chrt" "$subpkgdir/usr/bin/chrt"
+}
+
+package_colcrt() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/colcrt" "$subpkgdir/usr/bin/colcrt"
+}
+
+package_colrm() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/colrm" "$subpkgdir/usr/bin/colrm"
+}
+
+package_eject() {
+	pkgrdeps="musl libmount libblkid libeconf"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/eject" "$subpkgdir/usr/bin/eject"
+}
+
+package_enosys() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/enosys" "$subpkgdir/usr/bin/enosys"
+}
+
+package_exch() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/exch" "$subpkgdir/usr/bin/exch"
+}
+
+package_fadvise() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/fadvise" "$subpkgdir/usr/bin/fadvise"
+}
+
+package_fallocate() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/fallocate" "$subpkgdir/usr/bin/fallocate"
+}
+
+package_flock() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/flock" "$subpkgdir/usr/bin/flock"
+}
+
+package_getopt() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/getopt" "$subpkgdir/usr/bin/getopt"
+}
+
+package_hardlink() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/hardlink" "$subpkgdir/usr/bin/hardlink"
+}
+
+package_hexdump() {
+	pkgrdeps="musl libncurses"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/hexdump" "$subpkgdir/usr/bin/hexdump"
+}
+
+package_ionice() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/ionice" "$subpkgdir/usr/bin/ionice"
+}
+
+package_ipcmk() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/ipcmk" "$subpkgdir/usr/bin/ipcmk"
+}
+
+package_ipcrm() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/ipcrm" "$subpkgdir/usr/bin/ipcrm"
+}
+
+package_ipcs() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/ipcs" "$subpkgdir/usr/bin/ipcs"
+}
+
+package_isosize() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/isosize" "$subpkgdir/usr/bin/isosize"
+}
+
+package_last() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/last" "$subpkgdir/usr/bin/last"
+	cp "$bundledir/usr/bin/lastb" "$subpkgdir/usr/bin/lastb"
+}
+
+package_logger() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/logger" "$subpkgdir/usr/bin/logger"
+}
+
+package_look() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/look" "$subpkgdir/usr/bin/look"
+}
+
+package_mcookie() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/mcookie" "$subpkgdir/usr/bin/mcookie"
+}
+
+package_mesg() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/mesg" "$subpkgdir/usr/bin/mesg"
+}
+
+package_namei() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/namei" "$subpkgdir/usr/bin/namei"
+}
+
+package_nsenter() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/nsenter" "$subpkgdir/usr/bin/nsenter"
+}
+
+package_rename() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/rename" "$subpkgdir/usr/bin/rename"
+}
+
+package_renice() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/renice" "$subpkgdir/usr/bin/renice"
+}
+
+package_rev() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/rev" "$subpkgdir/usr/bin/rev"
+}
+
+package_script() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/script" "$subpkgdir/usr/bin/script"
+}
+
+package_scriptlive() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/scriptlive" "$subpkgdir/usr/bin/scriptlive"
+}
+
+package_scriptreplay() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/scriptreplay" "$subpkgdir/usr/bin/scriptreplay"
+}
+
+package_setarch() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+
+	for i in setarch i386 linux32 linux64 uname26 x86_64; do
+		cp "$bundledir/usr/bin/$i" "$subpkgdir/usr/bin/$i"
+	done
+}
+
+package_setpgid() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/setpgid" "$subpkgdir/usr/bin/setpgid"
+}
+
+package_setsid() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/setsid" "$subpkgdir/usr/bin/setsid"
+}
+
+package_setterm() {
+	pkgrdeps="musl libncurses"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/setterm" "$subpkgdir/usr/bin/setterm"
+}
+
+package_taskset() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/taskset" "$subpkgdir/usr/bin/taskset"
+}
+
+package_uclampset() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/uclampset" "$subpkgdir/usr/bin/uclampset"
+}
+
+package_ul() {
+	pkgrdeps="musl libncurses"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/ul" "$subpkgdir/usr/bin/uclampset"
+}
+
+package_unshare() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/unshare" "$subpkgdir/usr/bin/unshare"
+}
+
+package_utmpdump() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/utmpdump" "$subpkgdir/usr/bin/utmpdump"
+}
+
+package_uuidgen() {
+	pkgrdeps="musl libuuid"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/uuidgen" "$subpkgdir/usr/bin/uuidgen"
+}
+
+package_waitpid() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/waitpid" "$subpkgdir/usr/bin/waitpid"
+}
+
+package_wall() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/wall" "$subpkgdir/usr/bin/wall"
+}
+
+package_whereis() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/bin"
+	cp "$bundledir/usr/bin/whereis" "$subpkgdir/usr/bin/whereis"
+}
+
+# NEW SECTION (/usr/sbin)
+
+package_ldattach() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/sbin"
+	cp "$bundledir/usr/sbin/ldattach" "$subpkgdir/usr/sbin/ldattach"
+}
+
+package_readprofile() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/sbin"
+	cp "$bundledir/usr/sbin/readprofile" "$subpkgdir/usr/sbin/readprofile"
+}
+
+package_rtcwake() {
+	pkgrdeps="musl"
+
+	mkdir -p "$subpkgdir/usr/sbin"
+	cp "$bundledir/usr/sbin/rtcwake" "$subpkgdir/usr/sbin/rtcwake"
+}
+
+package_uuidd() {
+	pkgrdeps="musl libuuid"
+
+	mkdir -p "$subpkgdir/usr/sbin"
+	cp "$bundledir/usr/sbin/uuidd" "$subpkgdir/usr/sbin/uuidd"
+}
