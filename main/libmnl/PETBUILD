@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="libmnl"
+pkgdesc="The minimal netlink library"
 pkgver="1.0.5"
 pkgrel="0"
 subpkgs="libmnl libmnl-devel"
