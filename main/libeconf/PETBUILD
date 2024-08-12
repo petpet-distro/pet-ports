@@ -1,0 +1,69 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="libeconf"
+pkgdesc="Library and wrapper for extensible configuration files"
+pkgver="0.7.2"
+pkgrel="0"
+subpkgs="econf libeconf libeconf-devel libeconf-doc-mandoc"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk cmake"
+
+pkgtb="https://github.com/openSUSE/libeconf/archive/refs/tags/v$pkgver.tar.gz"
+
+configure() {
+	mkdir "build"
+	cd "build"
+
+	cmake ..
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+
+	set +e;
+	mv $bundledir/usr/local/* $bundledir/usr
+	set -e;
+	
+	rm -rfv "$bundledir/usr/local";
+}
+
+package_econf() {
+	pkgrdeps="musl libeconf"
+
+        petcp "usr/bin"
+}
+
+package_econf_doc_mandoc() {
+	pkgrdeps="musl"
+
+	petcp "usr/share/man/man8"
+}
+
+package_libeconf() {
+	pkgrdeps="musl"
+
+	petcp "usr/lib"
+}
+
+package_libeconf_devel() {
+	pkgrdeps="none"
+
+        petcp "usr/include"
+}
+
+package_libeconf_doc_mandoc() {
+	pkgrdeps="none"
+
+	petcp "usr/share/man/man3"
+}
