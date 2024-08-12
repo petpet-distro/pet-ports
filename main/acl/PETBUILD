@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="acl"
+pkgdesc="Library and wrapper for access control lists"
 pkgver="2.3.2"
 pkgrel="0"
 subpkgs="acl acl-devel acl-doc-mandoc acl-doc-notices"
