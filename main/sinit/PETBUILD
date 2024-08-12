@@ -1,0 +1,40 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="sinit"
+pkgver="1.1"
+pkgrel="0"
+subpkgs="sinit sinit-doc-mandoc"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://dl.suckless.org/sinit/sinit-$pkgver.tar.gz"
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                PREFIX=/ DESTDIR="$bundledir"
+
+	mkdir -p "$bundledir/usr/share"
+	mv "$bundledir/share" "$bundledir/usr/"
+}
+
+package_sinit() {
+	pkgrdeps="musl"
+
+        petcp "/bin"
+}
+
+package_sinit_doc_mandoc() {
+	pkgrdeps="none"
+
+	petcp "usr/share/man"
+}
