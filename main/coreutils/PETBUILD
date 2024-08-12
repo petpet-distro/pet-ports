@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="coreutils"
+pkgdesc="Command line utilities from the GNU system"
 pkgver="9.5"
 pkgrel="0"
 subpkgs="coreutils coreutils-doc-mandoc coreutils-doc-texinfo"
