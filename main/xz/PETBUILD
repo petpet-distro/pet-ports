@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="xz"
+pkgdesc="Library and wrapper for the XZ and LZMA formats"
 pkgver="5.6.2"
 pkgrel="0"
 subpkgs="xz xz-doc-mandoc xz-doc-notices liblzma liblzma-devel"
