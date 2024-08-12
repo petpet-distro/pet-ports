@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="tar"
+pkgdesc="Implementation of tar command from the GNU system"
 pkgver="1.35"
 pkgrel="0"
 subpkgs="tar tar-doc-mandoc tar-doc-texinfo"
