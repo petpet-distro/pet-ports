@@ -7,6 +7,7 @@
 authorsrightsnotice
 
 pkgname="make"
+pkgdesc="The GNU version of the make utility to maintain and build software"
 pkgver="4.4.1"
 pkgrel="0"
 subpkgs="make make-devel make-doc-mandoc make-doc-texinfo"
