@@ -10,8 +10,8 @@ pkgname="coreutils"
 pkgver="9.5"
 pkgrel="0"
 subpkgs="coreutils coreutils-doc-mandoc coreutils-doc-texinfo"
-pkgrdeps="musl libcap libmnl libcrypto"
-pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo libcrypto-devel"
+pkgrdeps="musl libcap libcrypto libacl libattr"
+pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo libcrypto-devel libcap-devel libcrypto-devel libattr-devel"
 
 pkgtb="https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz"
 
