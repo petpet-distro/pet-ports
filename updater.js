@@ -44,7 +44,7 @@ function main()
 	const repositories = ['main'];
 
 	for (let i = 0; i < repositories.length; i++) {
-		console.log(scanRepo(repositories[i]));
+		console.log(JSON.stringify(scanRepo(repositories[i]), null, '\t'));
 	}
 }
 main();
