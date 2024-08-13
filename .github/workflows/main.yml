@@ -3,7 +3,7 @@ name: Update packages
 on:
   push:
     branches:
-      - main
+      - __BRANCH_THAT_DOES_NOT_EXIST
 
 jobs:
   update-and-commit:
