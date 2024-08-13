@@ -1,0 +1,47 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="iproute2"
+pkgdesc="Userspace networking utilities for the Linux kernel"
+pkgver="6.9.0"
+pkgrel="0"
+subpkgs="iproute2 iproute2-doc-mandoc"
+pkgrdeps="musl libelf libmnl libcap"
+pkgbdeps="petpet-sdk linux-headers automake libelf-devel libmnl-devel libcap-devel"
+
+pkgtb="https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-$pkgver.tar.xz"
+
+configure() {
+        ./configure \
+                --prefix=/usr 
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_iproute2() {
+	pkgrdeps="musl libelf libmnl libcap"
+
+	petcp "/sbin"
+        petcp "usr/lib"
+	petcp "usr/include"
+	petcp "usr/share/iproute2"
+}
+
+package_iproute2_doc_mandoc() {
+	pkgrdeps="none"
+
+	petcp "usr/share/man"
+}
+
