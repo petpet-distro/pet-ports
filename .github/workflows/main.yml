@@ -1,0 +1,40 @@
+name: Update packages.json
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Run updater.py
+        run: |
+          python updater.py
+
+      - name: Configure Git
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+
+      - name: Commit changes
+        run: |
+          git add .
+          git diff-index --quiet HEAD || git commit -m "packages.json: Update with new packages"
+        
+      - name: Push changes
+        run: |
+          git push
+
