@@ -10,7 +10,7 @@ pkgname="kmod"
 pkgdesc="Linux(R) kernel module utilities"
 pkgver="32"
 pkgrel="0"
-subpkgs="kmod kmod-doc-mandoc libkmod libkmod-devel"
+subpkgs="kmod libkmod libkmod-devel"
 pkgrdeps="musl libz liblzma libcrypto"
 pkgbdeps="petpet-sdk libz-devel liblzma-devel libcrypto-devel"
 
@@ -22,7 +22,8 @@ configure() {
         ./configure \
                 --prefix=/usr \
 		--with-xz \
-		--with-zlib
+		--with-zlib \
+		--disable-manpages
 }
 
 build() {
@@ -44,12 +45,6 @@ package_libkmod() {
 	pkgrdeps="musl liblzma libz libcrypto"
 
 	petcp "usr/lib"
-}
-
-package_kmod_doc_mandoc() {
-	pkgrdeps="musl"
-
-	petcp "usr/share/man"
 }
 
 package_libkmod_devel() {
