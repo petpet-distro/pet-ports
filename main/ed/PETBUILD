@@ -33,7 +33,7 @@ package() {
 package_ed() {
 	pkgrdeps="musl"
 
-        petcp "/bin"
+	petcp "usr/bin"
 }
 
 package_ed_doc_mandoc() {
