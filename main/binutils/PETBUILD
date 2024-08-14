@@ -1,0 +1,62 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="binutils"
+pkgdesc="GNU implementations of the binary utilities"
+pkgver="2.43"
+pkgrel="0"
+subpkgs="binutils binutils-devel binutils-doc-mandoc binutils-doc-texinfo"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk autoconf automake m4 perl gperf texinfo"
+
+pkgtb="https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
+
+configure() {
+	./configure \
+		--prefix=/usr \
+		--disable-gprofng \
+		--disable-nls \
+		--disable-werror \
+		--without-zstd
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_binutils() {
+	pkgrdeps="musl"
+
+	petcp "usr/lib"
+        petcp "usr/bin"
+	petcp "usr/x86_64-pc-linux-musl"
+}
+
+package_binutils_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include"
+}
+
+package_binutils_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man"
+}
+
+package_binutils_doc_texinfo() {
+	pkgrdeps="none"
+
+	petcp "usr/share/info"
+}
+
