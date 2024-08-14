@@ -1,0 +1,56 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="petpet-osrelease"
+pkgdesc="Petpet os-release"
+pkgver="0.1.0"
+pkgrel="0"
+subpkgs="petpet-osrelease"
+pkgrdeps="none"
+pkgbdeps="petpet-base"
+
+configure() {
+	printf "%s" "Checking if touch command exists... "
+
+	if ! command -v touch 2>&1 >/dev/null; then
+		printf "%s\n" "Touch command not found!"
+		exit 1;
+	fi
+
+	printf "%s\n" "OK"
+
+	printf "%s\n" "petpet-osrelease configure succeeded."
+	printf "%s\n" "You may now proceed to building."
+}
+
+build() {
+	printf "%s\n" "NAME=\"petpet\"" >> "os-release"
+	printf "%s\n" "ID=\"petpet\"" >> "os-release"
+	printf "%s\n" "PRETTY_NAME=\"Petpet\"" >> "os-release"
+
+	printf "%s\n" "VARIANT=\"Canary\"" >> "os-release"
+	printf "%s\n" "VARIANT_ID=\"canary\"" >> "os-release"
+
+	printf "%s\n" "VERSION=\"rolling\"" >> "os-release"
+	printf "%s\n" "VERSION_ID=\"rolling\"" >> "os-release"
+	printf "%s\n" "VERSION_CODENAME=\"meow\"" >> "os-release"
+
+	printf "%s\n" "HOME_URL=\"https://petpet.eqilia.gay\"" >> "os-release"
+}
+
+package() {
+	mkdir -p "$bundledir/etc"
+
+	cp "$builddir/os-release" "$bundledir/etc/os-release"
+}
+
+package_petpet_osrelease() {
+	mkdir -p "$subpkgdir/etc"
+
+	cp "$bundledir/etc/os-release" "$subpkgdir/etc/os-release"
+}
