@@ -1,0 +1,44 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="nasm"
+pkgdesc="The based netwide assembler"
+pkgver="2.16"
+pkgrel="0"
+subpkgs="nasm nasm-doc-mandoc"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk musl-devel"
+
+pkgtb="https://www.nasm.us/pub/nasm/releasebuilds/$pkgver/nasm-$pkgver.tar.xz"
+
+configure() {
+        ./configure \
+                --prefix=/usr 
+}
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+                DESTDIR="$bundledir"
+}
+
+package_nasm() {
+	pkgrdeps="musl"
+
+        petcp "usr/bin"
+}
+
+package_nasm_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share"
+}
+
