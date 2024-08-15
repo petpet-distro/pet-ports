@@ -29,7 +29,7 @@ package() {
 package_libcap2() {
 	pkgrdeps="musl"
 
-        petcp "lib"
+        petcp "/lib"
 }
 
 package_libcap2_devel() {
