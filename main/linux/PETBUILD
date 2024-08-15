@@ -8,7 +8,7 @@ authorsrightsnotice
 
 pkgname="linux"
 pkgdesc="The Linux(R) Kernel"
-pkgver="6.6.44"
+pkgver="6.6.46"
 pkgrel="0"
 subpkgs="linux linux-headers linux-modules"
 pkgrdeps="none"
