@@ -1,0 +1,52 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="zstd"
+pkgdesc="Zstandard"
+pkgver="1.5.6"
+pkgrel="0"
+subpkgs="zstd zstd-doc-mandoc libzstd libzstd-devel"
+pkgrdeps="musl"
+pkgbdeps="petpet-sdk"
+
+pkgtb="https://github.com/facebook/zstd/archive/v$pkgver.tar.gz"
+
+build() {
+        make $MAKEOPTS
+}
+
+package() {
+        make $MAKEOPTS install \
+		PREFIX=/usr \
+                DESTDIR="$bundledir"
+}
+
+package_zstd() {
+	pkgrdeps="musl libzstd"
+
+        petcp "usr/bin"
+}
+
+package_zstd_doc_mandoc() {
+	pkgrdeps="none"
+
+        petcp "usr/share/man/man1"
+}
+
+package_libzstd() {
+	pkgrdeps="musl"
+
+	petcp "usr/lib"
+}
+
+package_libzstd_devel() {
+	pkgrdeps="none"
+
+	petcp "usr/include"
+}
+
