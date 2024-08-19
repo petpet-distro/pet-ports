@@ -10,7 +10,7 @@ pkgname="license-lgplv2.1"
 pkgdesc="The GNU Library General Public License, version 2.1"
 pkgver="2.1"
 pkgrel="0"
-subpkgs="licensing-gplv1"
+subpkgs="licensing-lgplv2.1"
 pkgrdeps="none"
 pkgbdeps="petpet-base curl"
 
@@ -38,7 +38,7 @@ package() {
 	cp "$builddir/LGPLv2.1" "$bundledir/usr/share/licenses/gnu/LGPLv2.1"
 }
 
-package_licensing_gplv1() {
+package_licensing_lgplv2.1() {
 	mkdir -p "$subpkgdir/usr/share/licenses/gnu"
 
 	petcp "usr/share/licenses/gnu"
