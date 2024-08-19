@@ -1,0 +1,45 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="license-agplv3"
+pkgdesc="The GNU Affero General Public License, version 3"
+pkgver="3"
+pkgrel="0"
+subpkgs="licensing-agplv3"
+pkgrdeps="none"
+pkgbdeps="petpet-base curl"
+
+configure() {
+	printf "%s" "Checking if curl command exists... "
+
+	if ! command -v touch 2>&1 >/dev/null; then
+		printf "%s\n" "curl command not found!"
+		exit 1;
+	fi
+
+	printf "%s\n" "OK"
+
+	printf "%s\n" "licensing-agplv3.0 configure succeeded."
+	printf "%s\n" "You may now proceed to building."
+}
+
+build() {
+	curl -L "https://www.gnu.org/licenses/agpl-3.0.txt" > AGPLv3.0
+}
+
+package() {
+	mkdir -p "$bundledir/usr/share/licenses/gnu"
+
+	cp "$builddir/AGPLv3.0" "$bundledir/usr/share/licenses/gnu/AGPLv3.0"
+}
+
+package_licensing_agplv3() {
+	mkdir -p "$subpkgdir/usr/share/licenses/gnu"
+
+	petcp "usr/share/licenses/gnu"
+}
