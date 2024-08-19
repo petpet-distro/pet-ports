@@ -1,0 +1,46 @@
+#!/bin/sh
+
+<<authorsrightsnotice
+        Author's Rights (C) Eqilia Luminé <eqilia@national.shitposting.agency>
+
+        This file is licensed under the European Union Public License, version 1.2 only.
+authorsrightsnotice
+
+pkgname="licensing-gplv2"
+pkgdesc="The GNU General Public License, version 2"
+pkgver="2"
+pkgrel="0"
+subpkgs="licensing-gplv2"
+pkgrdeps="none"
+pkgbdeps="petpet-base curl"
+
+configure() {
+	printf "%s" "Checking if curl command exists... "
+
+	if ! command -v touch 2>&1 >/dev/null; then
+		printf "%s\n" "curl command not found!"
+		exit 1;
+	fi
+
+	printf "%s\n" "OK"
+
+	printf "%s\n" "licensing-gplv2 configure succeeded."
+	printf "%s\n" "You may now proceed to building."
+}
+
+build() {
+	curl -L "https://www.gnu.org/licenses/gpl-2.0.txt" > GPLv2
+}
+
+package() {
+	mkdir -p "$bundledir/usr/share/licenses/gnu"
+
+	cp "$builddir/GPLv2" "$bundledir/usr/share/licenses/gnu/GPLv2"
+}
+
+package_licensing_gplv2() {
+	mkdir -p "$subpkgdir/usr/share/licenses/gnu"
+
+	petcp "usr/share/licenses/gnu"
+}
+
