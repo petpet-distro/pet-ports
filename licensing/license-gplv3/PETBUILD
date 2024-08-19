@@ -6,7 +6,7 @@
         This file is licensed under the European Union Public License, version 1.2 only.
 authorsrightsnotice
 
-pkgname="licensing-gplv3"
+pkgname="license-gplv3"
 pkgdesc="The GNU General Public License, version 3"
 pkgver="2"
 pkgrel="0"

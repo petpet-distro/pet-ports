@@ -6,11 +6,11 @@
         This file is licensed under the European Union Public License, version 1.2 only.
 authorsrightsnotice
 
-pkgname="licensing-gplv1"
+pkgname="license-gplv1"
 pkgdesc="The GNU General Public License, version 1"
 pkgver="1"
 pkgrel="0"
-subpkgs="licensing-gplv1"
+subpkgs="license-gplv1"
 pkgrdeps="none"
 pkgbdeps="petpet-base curl"
 
@@ -38,7 +38,7 @@ package() {
 	cp "$builddir/GPLv1" "$bundledir/usr/share/licenses/gnu/GPLv1"
 }
 
-package_licensing_gplv1() {
+package_license_gplv1() {
 	mkdir -p "$subpkgdir/usr/share/licenses/gnu"
 
 	petcp "usr/share/licenses/gnu"
