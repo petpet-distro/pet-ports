@@ -1,416 +1,340 @@
-[
-	{
-		"pkgname": "acl-devel",
-		"pkgver": "2.3.2-r0",
-		"pkgdesc": "Library and wrapper for access control lists",
-		"pkgdeps": ""
-	},
-	{
-		"pkgname": "acl-doc-mandoc",
-		"pkgver": "2.3.2-r0",
-		"pkgdesc": "Library and wrapper for access control lists",
-		"pkgdeps": ""
-	},
-	{
-		"pkgname": "acl-doc-notices",
-		"pkgver": "2.3.2-r0",
-		"pkgdesc": "Library and wrapper for access control lists",
-		"pkgdeps": ""
-	},
-	{
-		"pkgname": "acl",
-		"pkgver": "2.3.2-r0",
-		"pkgdesc": "Library and wrapper for access control lists",
-		"pkgdeps": ""
-	},
-	{
-		"pkgname": "fstrim",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libmount libblkid libeconf"
-	},
-	{
-		"pkgname": "getopt",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "hardlink",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "hexdump",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libncurses"
-	},
-	{
-		"pkgname": "hwclock",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "ionice",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "ipcmk",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "ipcrm",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "ipcs",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "isosize",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "kill",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "last",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "ldattach",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "libblkid-devel",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "none"
-	},
-	{
-		"pkgname": "libblkid",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "libfdisk-devel",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "none"
-	},
-	{
-		"pkgname": "libfdisk",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libuuid libblkid libeconf"
-	},
-	{
-		"pkgname": "libmount-devel",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "none"
-	},
-	{
-		"pkgname": "libmount",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libblkid libeconf"
-	},
-	{
-		"pkgname": "libuuid-devel",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "none"
-	},
-	{
-		"pkgname": "libuuid",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "logger",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "look",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "mcookie",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "mesg",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "mkfs-bfs",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "mkfs-cramfs",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libz"
-	},
-	{
-		"pkgname": "mkfs-minix",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "mkfs",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "mkswap",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libuuid libblkid libeconf"
-	},
-	{
-		"pkgname": "more",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libncurses"
-	},
-	{
-		"pkgname": "mount",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libmount libblkid libeconf"
-	},
-	{
-		"pkgname": "mountpoint",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libmount libblkid libeconf"
-	},
-	{
-		"pkgname": "namei",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "nologin",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "nsenter",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "pipesz",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "pivot_root",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "readprofile",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "rename",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "renice",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "rev",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "rtcwake",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "script",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "scriptlive",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "scriptreplay",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "setarch",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "setpgid",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "setsid",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "setterm",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libncurses"
-	},
-	{
-		"pkgname": "sulogin",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "swaplabel",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libblkid libuuid libeconf"
-	},
-	{
-		"pkgname": "switch_root",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "taskset",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "uclampset",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "ul",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libncurses"
-	},
-	{
-		"pkgname": "umount",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libmount libblkid libeconf"
-	},
-	{
-		"pkgname": "unshare",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "util-linux",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "util-linux dmesg kill more mount mountpoint pipesz umount agetty blkdiscard blkid blkpr blkzone blockdev chcpu ctrlaltdel findfs fsck fsck-cramfs fsck-minix fsfreeze fstrim hwclock mkfs mkfs-bfs mkfs-cramfs mkfs-minix mkswap nologin pivot_root sulogin swaplabel switch_root cal chmem choom chrt colcrt colrm eject enosys exch fadvise fallocate flock getopt hardlink hexdump ionice ipcmk ipcrm ipcs isosize last logger look mcookie mesg namei nsenter rename renice rev script scriptlive scriptreplay setarch setpgid setsid setterm taskset uclampset ul unshare utmpdump uuidgen waitpid wall whereis ldattach readprofile rtcwake uuidd libblkid libblkid-devel libfdisk libfdisk-devel libmount libmount-devel libuuid libuuid-devel"
-	},
-	{
-		"pkgname": "utmpdump",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "uuidd",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libuuid"
-	},
-	{
-		"pkgname": "uuidgen",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl libuuid"
-	},
-	{
-		"pkgname": "waitpid",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "wall",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	},
-	{
-		"pkgname": "whereis",
-		"pkgver": "2.40.2-r0",
-		"pkgdesc": "",
-		"pkgdeps": "musl"
-	}
-]
+{
+    "repositoryName": "ports",
+    "packages": [
+        {
+            "pkgname": "acl-devel",
+            "pkgver": "2.3.2-r0",
+            "pkgdeps": ""
+        },
+        {
+            "pkgname": "acl-doc-mandoc",
+            "pkgver": "2.3.2-r0",
+            "pkgdeps": ""
+        },
+        {
+            "pkgname": "acl-doc-notices",
+            "pkgver": "2.3.2-r0",
+            "pkgdeps": ""
+        },
+        {
+            "pkgname": "acl",
+            "pkgver": "2.3.2-r0",
+            "pkgdeps": ""
+        },
+        {
+            "pkgname": "fstrim",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libmount libblkid libeconf"
+        },
+        {
+            "pkgname": "getopt",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "hardlink",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "hexdump",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libncurses"
+        },
+        {
+            "pkgname": "hwclock",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "ionice",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "ipcmk",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "ipcrm",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "ipcs",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "isosize",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "kill",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "last",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "ldattach",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "libblkid-devel",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "libblkid",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "libfdisk-devel",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "libfdisk",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libuuid libblkid libeconf"
+        },
+        {
+            "pkgname": "libmount-devel",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "libmount",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libblkid libeconf"
+        },
+        {
+            "pkgname": "libuuid-devel",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "none"
+        },
+        {
+            "pkgname": "libuuid",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "logger",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "look",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "mcookie",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "mesg",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "mkfs-bfs",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "mkfs-cramfs",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libz"
+        },
+        {
+            "pkgname": "mkfs-minix",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "mkfs",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "mkswap",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libuuid libblkid libeconf"
+        },
+        {
+            "pkgname": "more",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libncurses"
+        },
+        {
+            "pkgname": "mount",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libmount libblkid libeconf"
+        },
+        {
+            "pkgname": "mountpoint",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl libmount libblkid libeconf"
+        },
+        {
+            "pkgname": "namei",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "nologin",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "nsenter",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "pipesz",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "pivot_root",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "readprofile",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "rename",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "renice",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "rev",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "rtcwake",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "script",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "scriptlive",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "scriptreplay",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "setarch",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "setpgid",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "setsid",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "setterm",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "slattach",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "start-stop-daemon",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "stat",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "strings",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "swap",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "sync",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "tune2fs",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "ubectl",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "unshare",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "w",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "watch",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "watchdog",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        },
+        {
+            "pkgname": "zcat",
+            "pkgver": "2.40.2-r0",
+            "pkgdeps": "musl"
+        }
+    ]
+}
