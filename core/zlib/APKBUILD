@@ -1,0 +1,34 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+pkgname="zlib"
+pkgver="1.3.1"
+pkgrel=0
+pkgdesc="a \"spiffy yet [...] unobtrusive\" (de/)compression library"
+arch="x86_64"
+url="https://zlib.net"
+license="Zlib"
+subpackages="$pkgname-dev $pkgname-doc"
+options="!check"
+depends="musl"
+builddir="$srcdir/$pkgname-$pkgver"
+source="https://zlib.net/fossils/zlib-$pkgver.tar.gz"
+
+build() {
+	./configure \
+		--prefix=/usr \
+		--libdir=/lib \
+		--sharedlibdir=/lib
+
+	make
+}
+
+check() {
+	make check
+}
+
+package() {
+	DESTDIR="$pkgdir" make install
+}
+
+sha512sums="
+580677aad97093829090d4b605ac81c50327e74a6c2de0b85dd2e8525553f3ddde17556ea46f8f007f89e435493c9a20bc997d1ef1c1c2c23274528e3c46b94f  zlib-1.3.1.tar.gz
+"
