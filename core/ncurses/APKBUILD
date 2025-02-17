@@ -1,0 +1,42 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+pkgname="ncurses"
+pkgver="6.5"
+pkgrel=0
+pkgdesc="terminal user interface library"
+arch="x86_64"
+url="https://invisible-island.net/ncurses/"
+license="EXPAT"
+subpackages="$pkgname-dev $pkgname-terminfo $pkgname-doc"
+options="!check"
+depends="musl"
+builddir="$srcdir/$pkgname-$pkgver-20250215"
+source="https://invisible-mirror.net/archives/ncurses/current/ncurses-${pkgver}-20250215.tgz"
+
+build() {
+	./configure \
+		--without-ada \
+		--without-tests \
+		--with-shared \
+		--with-cxx-binding \
+		--with-cxx-shared \
+		--enable-symlinks \
+		--enable-widec \
+		--prefix=/usr 
+
+	make
+}
+
+package() {
+	make install DESTDIR="$pkgdir"
+}
+
+terminfo() {
+	pkgdesc="$pkgdesc (terminfo)"
+
+	amove usr/share/terminfo
+	amove usr/lib/terminfo
+}
+
+sha512sums="
+34d3b87a404d7c1f2411964956c6fd61823459a9ed832f6ea44837f344056d0b2332c9d711a639920f286f4324cdf3f1ec0fcfbc19e86ebce950a92164b0dbdc  ncurses-6.5-20250215.tgz
+"

@@ -1,0 +1,30 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+pkgname="coreutils"
+pkgver="9.6"
+pkgrel=0
+pkgdesc="gnu coreutils"
+arch="x86_64"
+url="https://www.gnu.org/software/coreutils"
+license="GPL-3.0-or-later"
+options="!check"
+subpackages="$pkgname-doc"
+depends="musl"
+builddir="$srcdir/$pkgname-$pkgver"
+source="https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz"
+
+build() {
+	./configure \
+		--prefix=/usr \
+		--libdir=/usr/lib/x86_64-musl \
+		--bindir=/bin
+
+	make
+}
+
+package() {
+	DESTDIR="$pkgdir" make install
+}
+
+sha512sums="
+398391d7f9d77e6117b750abb8711eebdd9cd2549e7846cab26884fb2dd522b6bcfb8bf7fef35a12683e213ada7f89b817bf615628628d42aee3fa3102647b28  coreutils-9.6.tar.xz
+"

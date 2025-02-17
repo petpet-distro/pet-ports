@@ -1,0 +1,32 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+pkgname="openssl"
+pkgver="3.4.1"
+pkgrel=0
+pkgdesc="popular crypto library"
+arch="x86_64"
+# THE SITE FUCKING SUCKS
+url="https://openssl-library.org"
+license="Apache-2.0"
+subpackages="$pkgname-dev"
+depends="musl musl-dev perl"
+builddir="$srcdir/$pkgname-$pkgver"
+source="https://github.com/openssl/openssl/releases/download/openssl-$pkgver/openssl-$pkgver.tar.gz"
+
+build() {
+	./config \
+		--prefix=/usr \
+		--libdir=lib \
+		--openssldir=/etc/ssl \
+		shared \
+		enable-ktls
+
+	make
+}
+
+package() {
+	make install DESTDIR="$pkgdir"
+}
+
+sha512sums="
+1de6307c587686711f05d1e96731c43526fa3af51e4cd94c06c880954b67f6eb4c7db3177f0ea5937d41bc1f8cadcf5bce75025b5c1a46a469376960f1001c5f  openssl-3.4.1.tar.gz
+"

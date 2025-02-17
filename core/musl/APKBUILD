@@ -1,0 +1,30 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+pkgname="musl"
+pkgver="1.2.5"
+pkgrel=0
+pkgdesc="best musl package"
+arch="x86_64"
+url="https://musl.libc.org"
+license="EXPAT"
+subpackages="$pkgname-dev"
+options="!check"
+depends="musl"
+builddir="$srcdir/$pkgname-$pkgver"
+source="https://musl.libc.org/releases/musl-$pkgver.tar.gz"
+
+build() {
+	./configure \
+		--prefix=/usr \
+		--libdir=/usr/lib/x86_64-musl \
+		--bindir=/bin
+
+	make
+}
+
+package() {
+	DESTDIR="$pkgdir" make install
+}
+
+sha512sums="
+7bb7f7833923cd69c7a1a9b8a5f1784bfd5289663eb6061dcd43d583e45987df8a68a1be05d75cc1c88a3f5b610653d1a70f4a9cff4d8f7fd41ae73ee058c17c  musl-1.2.5.tar.gz
+"

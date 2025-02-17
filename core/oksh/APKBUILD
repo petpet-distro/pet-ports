@@ -1,0 +1,31 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+# the next thing im ducking porting is ed istg
+pkgname="oksh"
+pkgver="7.6"
+pkgrel=0
+pkgdesc="openbsd's korn shell"
+arch="x86_64"
+url="https://github.com/ibara/oksh"
+license="Public-Domain"
+subpackages="$pkgname-doc"
+# not sure about the test thingie here
+# and i cant be bothered to check
+options="!check"
+depends="musl ncurses ncurses-dev"
+builddir="$srcdir/$pkgname-$pkgver"
+source="https://github.com/ibara/oksh/releases/download/oksh-$pkgver/oksh-$pkgver.tar.gz"
+
+build() {
+	./configure \
+		--prefix=/usr
+
+	make
+}
+
+package() {
+	DESTDIR="$pkgdir" make install
+}
+
+sha512sums="
+78e2d8eb5b1081b3e49b1801f3a6b3bc01480e0fc712d0ae326be24e3784c9fe18369540bdd5050f9dff4236a210f4709b416ae03d397a70e9cc37fe4140618d  oksh-7.6.tar.gz
+"

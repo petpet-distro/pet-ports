@@ -1,0 +1,28 @@
+# Maintainer: Emilia Luminé <eqilia@national.shitposting.agency>
+pkgname="apk-tools"
+pkgver="2.14.0"
+pkgrel=0
+pkgdesc="alpine package keeper"
+arch="x86_64"
+url="https://gitlab.alpinelinux.org/alpine/apk-tools"
+license="GPL-2.0-only"
+subpackages="$pkgname-dev $pkgname-doc"
+depends="musl ca-certificates openssl-dev lua5.3 lua5.3-dev lua-lzlib zlib zlib-dev scdoc"
+builddir="$srcdir/$pkgname-v$pkgver"
+source="https://gitlab.alpinelinux.org/alpine/apk-tools/-/archive/v$pkgver/apk-tools-v$pkgver.tar.gz"
+
+build() {
+	make
+}
+
+check() {
+	make check
+}
+
+package() {
+	make DESTDIR="$pkgdir" LIBDIR="/usr/lib" install
+}
+
+sha512sums="
+95bfc6d4210c3fb0cd0226b01a67610d719bdf88574c4159b15594c379fa63a7aea88dbeba435af6920e68e65547c9472f987c53589d5f5cc3e1e1280ee8c227  apk-tools-v2.14.0.tar.gz
+"
