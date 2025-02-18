@@ -2,7 +2,7 @@
 # the next thing im ducking porting is ed istg
 pkgname="oksh"
 pkgver="7.6"
-pkgrel=1
+pkgrel=2
 pkgdesc="openbsd's korn shell"
 arch="x86_64"
 url="https://github.com/ibara/oksh"
@@ -11,13 +11,14 @@ subpackages="$pkgname-doc"
 # not sure about the test thingie here
 # and i cant be bothered to check
 options="!check"
-depends="musl ncurses ncurses-dev"
+depends="musl"
 builddir="$srcdir/$pkgname-$pkgver"
 source="https://github.com/ibara/oksh/releases/download/oksh-$pkgver/oksh-$pkgver.tar.gz"
 
 build() {
 	./configure \
-		--prefix=/usr
+		--prefix=/usr \
+		--disable-curses
 
 	make
 }
