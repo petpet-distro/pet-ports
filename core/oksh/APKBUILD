@@ -2,7 +2,7 @@
 # the next thing im ducking porting is ed istg
 pkgname="oksh"
 pkgver="7.6"
-pkgrel=0
+pkgrel=1
 pkgdesc="openbsd's korn shell"
 arch="x86_64"
 url="https://github.com/ibara/oksh"
@@ -24,6 +24,10 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" make install
+
+	mkdir "$pkgdir/bin"
+
+	ln -s "$pkgdir/usr/bin/oksh" "$pkgdir/bin/sh"
 }
 
 sha512sums="
